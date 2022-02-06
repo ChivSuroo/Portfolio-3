@@ -61,3 +61,10 @@ HANGMANPICS = ['''
  / \  |
       |
 =========''']
+
+# These will be the words used when 
+# it comes to the user guessing.
+# These words will be completely random when
+# 
+
+WORDS = ["PYTHON", "MOMENT", "CODING", "MANSION", "TROUBLE", "SKAKE", "CODEINSTITUTE"]
