@@ -70,40 +70,70 @@ HANGMAN = ['''
 WORDS = ["PYTHON", "MOMENT", "CODING", "MANSION",
          "TROUBLE", "SKAKE", "CODEINSTITUTE"]
 
-max_WRONG = len(HANGMAN) - 1
+MAX_WRONG = len(HANGMAN) - 1
 
-# Initialize Variables
+# Variables Initialize
 
-# Pick a word
+# Word Selection
+# 
 word = random.choice(WORDS)
 
-# Dashes for letters in the word
+# Dashes to Represent Each Letter in Word
 current_guess = "-" * len(word)
 
 # Incorrect Guess Count
 # this will count the action of all the incorrect attempts
 wrong_guesses = 0
 
-# Used Letter
+# Used Letters Tracker
 used_letters = []
 
-# MLoop
-print("Welcome To Hangman")
-print("Go Try and Guess The Word to Win")
+# Main Game Loop
+print("Welcome to Python Hangman")
+print("Try your best to guess the word")
 
-while wrong_guesses < max_WRONG and current_guess != word:
+while wrong_guesses < MAX_WRONG and current_guess != word:
     print(HANGMAN[wrong_guesses])
-    print("You have used the following letters: ", used_letters)
-    print("Currently, the word is", current_guess)
+    print("You have used the following letters: ")
+    print("Currently, the word is: ", current_guess)
 
-    guess = input("Enter your guess:")
+    guess = input("Enter your letter guess:")
     guess = guess.upper()
 
-    # Letter Check (This will check the letters that the user has inputted already)
+    # The letter checker to see if the 'letter' has been inputted already
     while guess in used_letters:
-      print("Sorry, you have already inputted this letter. Please choose another letter.", guess)
-      guess = input("Enter your guess")
-      guess = guess.upper()
+        print("Sorry, you have already guessed that letter", guess)
+        guess = input("Enter your guess")
+        guess = guess.upper()
 
-# Adds new guessed letters to a new list of guessed letters
-used_letters.append(guess)
+    # Adds the newly guessed letters to a list.
+    used_letters.append(guess)
+
+    # Checks guess
+    if guess in word:
+        print("You have guessed the letter correctly!!")
+
+        # Give a new version of the word with mixed letter and dashes
+
+        new_current_guess = ""
+        for letter in range(len(word)):
+            if guess == word[letter]:
+                new_current_guess += guess
+            else:
+                new_current_guess += current_guess[letter]
+
+        current_guess = new_current_guess
+    else:
+        print("Your guess was incorrect")
+        # Increase the wrong number by 1
+        wrong_guesses += 1
+
+# The End Game
+# The Notification showing if they've won or not.
+if wrong_guesses == MAX_WRONG:
+    print(HANGMAN[wrong_guesses])
+    print("You have lost the game, BETTER LOOK NEXT TIME!")
+    print("The correct word is", word)
+
+else:
+    print("You have won, congratulations!!!")
