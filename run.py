@@ -67,8 +67,8 @@ HANGMAN = ['''
 # These words will be completely random when
 # the game begins // only one word will active
 
-WORDS = ["PYTHON", "MOMENT", "CODING", "MANSION",
-         "TROUBLE", "SKAKE", "CODEINSTITUTE"]
+WORDS = ["PYTHON", "LETTER", "CODING", "MANSION",
+         "TROUBLE", "SNAKE", "CODEINSTITUTE"]
 
 MAX_WRONG = len(HANGMAN) - 1
 
