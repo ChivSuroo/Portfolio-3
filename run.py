@@ -75,7 +75,6 @@ MAX_WRONG = len(HANGMAN) - 1
 # Variables Initialize
 
 # Word Selection
-# 
 word = random.choice(WORDS)
 
 # Dashes to Represent Each Letter in Word
